@@ -1,0 +1,54 @@
+.addtab {
+  position: fixed;
+  left: 230px;
+  top: 9px;
+  
+  z-index: 10;
+}
+
+.tab {
+  position: fixed;
+  top: 2px;
+  z-index: 9;
+}
+
+
+.tabbar {
+  position: fixed;
+  top: 0px;
+  z-index: 8;
+}
+
+.url  {
+  position: fixed;
+  top: 46px;
+  left: 160px;
+  width:535px;
+  height: 20px;
+  background: #10292d;
+  outline: none;
+  border: none;
+  color: white;
+  z-index: 10;
+}
+
+.back {
+position: fixed;
+z-index:11;
+top:45px;
+left:16px;
+}
+
+.forward {
+position: fixed;
+z-index:11;
+top:46px;
+left:45px;
+}
+.webframe {
+position: fixed;
+top: 100px;
+width: 1090px;
+height: 720px;
+  z-index: 10000;
+}
