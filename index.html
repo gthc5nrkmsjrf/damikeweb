@@ -35,6 +35,7 @@ Online HTML, CSS and JavaScript editor to run code online.
 
       let value = this.value;
 
+      // auto add https://
       if (
         !value.startsWith('http://') &&
         !value.startsWith('https://')
@@ -42,7 +43,29 @@ Online HTML, CSS and JavaScript editor to run code online.
         value = 'https://' + value;
       }
 
-      document.querySelector('#webframe').src = value;
+      // YouTube watch link -> embed link
+      if (value.includes('youtube.com/watch?v=')) {
+        let id = new URL(value).searchParams.get('v');
+        value = 'https://www.youtube.com/embed/' + id;
+      }
+
+      // youtu.be short link -> embed link
+      if (value.includes('youtu.be/')) {
+        let id = value.split('youtu.be/')[1];
+        value = 'https://www.youtube.com/embed/' + id;
+      }
+
+      fetch(value)
+        .then(response => response.text())
+        .then(html => {
+          document.querySelector('#webframe').srcdoc = html;
+        })
+        .catch(err => {
+          console.log(err);
+
+          // fallback to normal iframe loading
+          document.querySelector('#webframe').src = value;
+        });
     }
   });
 });
