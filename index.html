@@ -55,6 +55,10 @@ Online HTML, CSS and JavaScript editor to run code online.
         value = 'https://www.youtube.com/embed/' + id;
       }
 
+      if (value.includes('google.com')) {
+        value = 'https://www.google.com/webhp?igu=1';
+      }
+
       fetch(value)
         .then(response => response.text())
         .then(html => {
